@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+xcode-select -v
+if [[ $? != 0 ]] ; then
+    xcode-select --install
+fi

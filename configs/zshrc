@@ -1,0 +1,25 @@
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH="$HOME/.oh-my-zsh"
+
+# enable comments "#" expressions in the prompt shell
+setopt INTERACTIVE_COMMENTS
+# append new history entries to the history file
+setopt APPEND_HISTORY
+# save each command to the history file as soon as it is executed
+setopt INC_APPEND_HISTORY
+# ignore recording duplicate consecutive commands in the history
+setopt HIST_IGNORE_DUPS
+# ignore commands that start with a space in the history
+setopt HIST_IGNORE_SPACE
+
+
+plugins=(git asdf zsh-autosuggestions)
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval $(thefuck --alias)
+
+source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

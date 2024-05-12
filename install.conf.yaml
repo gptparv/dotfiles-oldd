@@ -1,0 +1,52 @@
+- defaults:
+    link:
+      relink: true
+    brewfile:
+      stdout: true
+      stderr: true
+      include: ['tap', 'brew', 'cask', 'mas', 'vscode']
+    shell:
+      stdout: true
+      stderr: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc: configs/zshrc
+    ~/.config/starship.toml: 
+      create: true
+      path: configs/starship.toml
+
+- shell:
+  - [git submodule update --init --recursive, Install/Update submodules]
+  - [chmod +x src/brew; ./src/brew, "Install Homebrew, update if already present"]
+
+- brewfile:
+    file: Brewfile
+
+- template:
+  - ~/.gitconfig:
+      source_file: templates/gitconfig
+      params:
+        NAME: Parv Gupta
+        EMAIL: 85178397+gptparv@users.noreply.github.com
+        GITHUB_USERNAME: gptparv
+
+- git:
+    '~/.oh-my-zsh':
+        url: 'https://github.com/ohmyzsh/ohmyzsh.git'
+        description: 'oh-my-zsh'
+    '~/.oh-my-zsh/custom/plugins/zsh-autosuggestions':
+        url: 'https://github.com/zsh-users/zsh-autosuggestions'
+        description: 'zsh-autosuggestions'
+    '~/.oh-my-zsh/custom/plugins/zsh-completions':
+        url: 'https://github.com/zsh-users/zsh-completions'
+        description: 'zsh-completions'
+    '~/.oh-my-zsh/custom/plugins/eza':
+        url: 'https://github.com/eza-community/eza.git'
+        description: 'eza completions'
+    
+- asdf:
+  - plugin: terraform
+  - plugin: packer
+  - plugin: terraform-docs
