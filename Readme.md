@@ -25,8 +25,18 @@
 
 The setup is idempotent, i.e. you can run it multiple times without worrying about different results.
 
-1. Download the repository as zip file from the Github repository.
-2. Extract the files in a folder named `.dotfiles` in your home directory.
+1. Install the Xcode Command Line Tools. Run the command, and follow the prompts.
+
+```shell
+xcode-select --install
+```
+
+2. Pull the repository from Github:
+
+```shell
+git clone https://github.com/gptparv/dotfiles ~/.dotfiles
+```
+
 3. Navigate to the `.dotfiles` directory:
 
 ```shell
@@ -44,6 +54,9 @@ chmod +x install
 ```shell
 ./install
 ```
+
+> [!TIP]
+> The script might fail at certain steps, just run it again.
 
 ## Getting Started
 
